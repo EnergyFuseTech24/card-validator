@@ -10,7 +10,7 @@ export const isValidCard = (cardNumber: string): boolean => {
   let shouldDouble = false;
 
   for (let i = cardNumber.length - 1; i >= 0; i--) {
-    let digit = parseInt(cardNumber[i]);
+    let digit = parseInt(cardNumber[i]!);
 
     if (shouldDouble) {
       digit *= 2;
