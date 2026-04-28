@@ -1,3 +1,10 @@
+export type CardType =
+  | "Visa"
+  | "MasterCard"
+  | "American Express"
+  | "Discover"
+  | "Unknown";
+
 export const isValidCard = (cardNumber: string): boolean => {
   let sum = 0;
   let shouldDouble = false;
@@ -15,4 +22,15 @@ export const isValidCard = (cardNumber: string): boolean => {
   }
 
   return sum % 10 === 0;
+};
+
+
+// Card Type Detection
+export const detectCardType = (cardNumber: string): CardType => {
+  if (/^4/.test(cardNumber)) return "Visa";
+  if (/^(5[1-5])/.test(cardNumber)) return "MasterCard";
+  if (/^(34|37)/.test(cardNumber)) return "American Express";
+  if (/^(6011|65)/.test(cardNumber)) return "Discover";
+
+  return "Unknown";
 };
